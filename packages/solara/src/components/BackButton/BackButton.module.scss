@@ -1,0 +1,26 @@
+@use '@solara-studios/design-system/src/styles/partials/colors' as colors;
+@use '@solara-studios/design-system/src/styles/partials/breakpoints' as
+  breakpoint;
+  @use '@solara-studios/design-system/src/styles/partials/spaces' as spaces;
+
+.backButton {
+  background: none;
+  border: none;
+  color: colors.$primary-500;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  left: spaces.$xs;
+
+  @media only screen and (min-width: breakpoint.$tablet-min) and (max-width: breakpoint.$tablet-max) {
+    left: 56px;
+  }
+
+  @media only screen and (min-width: breakpoint.$laptop-min) and (max-width: breakpoint.$laptop-max) {
+    left: 56px;
+  }
+
+  @media only screen and (min-width: breakpoint.$desktop-min) {
+    left: 56px;
+  }
+}

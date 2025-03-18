@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "rootDir": "src",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "target": "ES6",
+    "incremental": true,
+    "typeRoots": ["./node_modules/@types", "./types"]
+  },
+  "include": ["src", "global.d.ts"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "next.config.ts",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/*.stories.ts",
+    "**/*.stories.tsx"
+  ]
+}

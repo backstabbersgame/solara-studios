@@ -1,0 +1,173 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/spaces';
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: spaces.$smd;
+
+  &.primary {
+    background-color: colors.$primary-500;
+    color: colors.$neutral-0;
+    box-shadow: 0px -4px 5px 0px rgba(0, 0, 0, 0.08) inset, 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset;
+
+    .arrow {
+      fill: colors.$neutral-0;
+    }
+
+    &:hover,
+    &:active {
+      background-color: colors.$primary-700;
+    }
+
+    &:active,
+    &:focus,
+    &:focus-within,
+    &:focus-visible {
+      outline: 2px solid colors.$primary-500;
+    }
+
+    &:disabled,
+    &:disabled:hover {
+      background-color: colors.$neutral-300;
+      cursor: not-allowed;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  &.secondary {
+    background-color: colors.$neutral-0;
+    color: colors.$neutral-800;
+    border: 1px solid colors.$primary-300;
+
+    .arrow {
+      fill: colors.$primary-500;
+    }
+
+    &:hover,
+    &:active {
+      background-color: colors.$primary-100;
+    }
+
+    &:active,
+    &:focus,
+    &:focus-within,
+    &:focus-visible {
+      outline: 2px solid colors.$primary-500;
+    }
+
+    &:disabled,
+    &:disabled:hover {
+      border: 1px solid colors.$neutral-200;
+      color: colors.$neutral-300;
+      cursor: not-allowed;
+      outline: none;
+      background-color: colors.$neutral-0;
+    }
+
+    &:disabled .arrow {
+      fill: colors.$neutral-300;
+    }
+  }
+
+  &.tertiary {
+    border: 1px solid colors.$primary-300;
+    background-color: transparent;
+    color: colors.$neutral-0;
+
+    .arrow {
+      fill: colors.$primary-100;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: colors.$primary-700;
+    }
+
+    &:active,
+    &:focus,
+    &:focus-within,
+    &:focus-visible {
+      outline: 2px solid colors.$primary-300;
+    }
+
+    &:disabled,
+    &:disabled:hover {
+      border: 1px solid colors.$neutral-200;
+      color: colors.$neutral-300;
+      cursor: not-allowed;
+      outline: none;
+    }
+
+    &:disabled .arrow {
+      fill: colors.$neutral-300;
+    }
+  }
+
+  &.link {
+    border: none;
+    background-color: transparent;
+    color: colors.$primary-500;
+    outline: none;
+
+    .arrow {
+      fill: colors.$primary-500;
+    }
+
+    &:hover .arrow,
+    &:active .arrow {
+      fill: colors.$primary-700;
+    }
+
+    &:hover,
+    &:active {
+      color: colors.$primary-700;
+      fill: colors.$primary-700;
+    }
+
+    &:focus {
+      color: colors.$primary-500;
+    }
+
+    &:active,
+    &:focus,
+    &:focus-within,
+    &:focus-visible {
+      text-decoration: underline;
+      text-decoration-style: solid;
+      text-decoration-thickness: auto;
+    }
+
+    &:disabled,
+    &:disabled:hover {
+      color: colors.$neutral-300;
+      cursor: not-allowed;
+      outline: none;
+    }
+
+    &:disabled .arrow {
+      fill: colors.$neutral-300;
+    }
+  }
+
+  &.cta {
+    background-color: colors.$neutral-0;
+    height: 40px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    box-shadow: 0px 4px 2px 0px #00000026;
+
+    &:hover {
+      background: linear-gradient(
+        85.16deg,
+        colors.$primary-500 1.76%,
+        colors.$feedback-info-500 100%
+      );
+      color: colors.$neutral-0;
+    }
+  }
+}

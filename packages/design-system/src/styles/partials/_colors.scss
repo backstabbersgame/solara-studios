@@ -1,0 +1,67 @@
+// primary
+$primary-900: #282960;
+$primary-700: #4547a9;
+$primary-500: #6466f1;
+$primary-300: #9ea0f6;
+$primary-100: #dadafc;
+$primary-50: #f7f7fe;
+
+// neutral
+$neutral-900: #080318;
+$neutral-800: #1f2937;
+$neutral-600: #4b5563;
+$neutral-500: #6b7280;
+$neutral-400: #9ca3af;
+$neutral-300: #d1d5db;
+$neutral-200: #e5e7eb;
+$neutral-100: #f3f4f6;
+$neutral-50: #f9fafb;
+$neutral-0: #ffffff;
+
+// feedback-success
+$feedback-success-900: #0e4f26;
+$feedback-success-700: #188a42;
+$feedback-success-500: #22c55d;
+$feedback-success-300: #76db9b;
+$feedback-success-100: #caf1d8;
+$feedback-success-50: #f3fcf7;
+
+// feedback-warning
+$feedback-warning-900: #5e4803;
+$feedback-warning-700: #a47d07;
+$feedback-warning-500: #ebb305;
+$feedback-warning-300: #f2d066;
+$feedback-warning-100: #faedc4;
+$feedback-warning-50: #fdfbf3;
+
+// feedback-danger
+$feedback-danger-900: #661714;
+$feedback-danger-700: #b32b24;
+$feedback-danger-500: #ff3d32;
+$feedback-danger-300: #ff8780;
+$feedback-danger-100: #ffd0ce;
+$feedback-danger-50: #fff5f5;
+
+// feedback-info
+$feedback-info-900: #183462;
+$feedback-info-700: #295bac;
+$feedback-info-500: #3c82f6;
+$feedback-info-300: #84b2f9;
+$feedback-info-100: #d0e1fd;
+$feedback-info-50: #3c82f6;
+
+// gradient 
+$gradient-linear-05: linear-gradient(180deg, #ffffff 0%, #f3f4f6 100%);
+$gradient-linear-04: linear-gradient(90deg, #4547a9 0%, #282960 100%);
+$gradient-linear-03: linear-gradient(90deg, #4547a9 0%, rgba(0, 0, 0, 0) 100%);
+$gradient-linear-02: linear-gradient(123.5deg, #7bcddf -6.58%, #6d16b4 118.94%);
+$gradient-linear-01: linear-gradient(
+  119.94deg,
+  #438ab0 -12.67%,
+  #90e089 111.8%
+);
+
+// accent
+$accent-500: #F97315;
+$accent-100: #FFDDC7;
+

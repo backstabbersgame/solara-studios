@@ -1,0 +1,64 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/typography';
+@use '../../styles/partials/spaces';
+
+.input {
+  height: 40px;
+  border-radius: spaces.$smd;
+  padding: 0 spaces.$smd;
+  background-color: colors.$neutral-0;
+  border: 1px solid colors.$neutral-300;
+
+  color: colors.$neutral-800;
+  font-family: typography.$base-font-family;
+  font-size: typography.$font-size-16;
+  line-height: typography.$line-height-150;
+  font-weight: typography.$font-weight-regular;
+
+  &::placeholder {
+    color: colors.$neutral-400;
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    outline: 1px solid colors.$primary-500;
+    border: 1px solid colors.$primary-500;
+  }
+
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    box-shadow: 0px 0px 4px 0px colors.$primary-500;
+  }
+}
+
+.input:disabled {
+  background-color: colors.$neutral-50;
+  border: 1px solid colors.$neutral-200;
+  cursor: not-allowed;
+  color: colors.$neutral-400;
+
+  &::placeholder {
+    color: colors.$neutral-300;
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    border: 1px solid colors.$neutral-200;
+  }
+
+  &:focus,
+  &:focus-visible {
+    box-shadow: none;
+  }
+}
+
+.input:user-invalid {
+  border: 1px solid colors.$feedback-danger-500;
+  outline: 1px solid colors.$feedback-danger-500;
+  box-shadow: 0px 0px 4px 0px colors.$neutral-0;
+}

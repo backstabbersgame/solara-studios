@@ -1,0 +1,11 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/typography';
+@use '../../styles/partials/spaces';
+
+.label {
+  color: colors.$neutral-600;
+  font-family: typography.$base-font-family;
+  font-weight: typography.$font-weight-regular;
+  font-size: typography.$font-size-14;
+  line-height: typography.$line-height-150;
+}

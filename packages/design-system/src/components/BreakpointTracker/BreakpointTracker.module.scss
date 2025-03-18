@@ -1,0 +1,27 @@
+@use '../../styles/partials/typography';
+
+.currentBreakpoint {
+  margin: 0;
+  font-family: typography.$base-font-family;
+  font-weight: typography.$font-weight-regular;
+
+  strong {
+    font-weight: typography.$font-weight-bold;
+  }
+}
+
+.fixedBreakpoints {
+  font-family: typography.$base-font-family;
+
+  h4 {
+    margin: 0 0 10px 0;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      margin: 5px 0;
+    }
+  }
+}

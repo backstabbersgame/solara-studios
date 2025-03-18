@@ -1,0 +1,71 @@
+@use '../../styles/partials/breakpoints' as breakpoint;
+
+.grid {
+  display: grid;
+  gap: 16px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  width: 100vw;
+
+  &.grid-12,
+  &.grid-8,
+  &.grid-6,
+  &.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (min-width: breakpoint.$tablet-min) and (max-width: breakpoint.$tablet-max) {
+  .grid {
+    &.grid-12,
+    &.grid-8 {
+      grid-template-columns: repeat(8, 1fr);
+    }
+    &.grid-6,
+    &.grid-4 {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+}
+
+@media only screen and (min-width: breakpoint.$laptop-min) and (max-width: breakpoint.$laptop-max) {
+  .grid {
+    &.grid-12 {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    &.grid-8,
+    &.grid-6,
+    &.grid-4 {
+      grid-template-columns: repeat(8, 1fr);
+    }
+  }
+}
+
+@media only screen and (min-width: breakpoint.$desktop-min) {
+  .grid {
+    &.grid-12 {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    &.grid-6 {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    &.grid-8 {
+      grid-template-columns: repeat(8, 1fr);
+    }
+
+    &.grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+.storybook-grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed lightcoral;
+  background-color: rgba(240, 128, 128, 0.385);
+}

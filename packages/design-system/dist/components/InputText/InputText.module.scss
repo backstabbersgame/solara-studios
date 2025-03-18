@@ -1,0 +1,185 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/typography';
+@use '../../styles/partials/spaces';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  div:hover,
+  div:focus,
+  div:focus-visible,
+  div:focus-within {
+    ~ .hint {
+      color: colors.$primary-500;
+    }
+  }
+}
+
+
+.required {
+  color: colors.$feedback-danger-500;
+  font-family: typography.$base-font-family;
+}
+
+.container div {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &:hover .icon,
+  &:focus .icon,
+  &:focus-visible .icon,
+  &:focus-within .icon {
+    fill: colors.$primary-500;
+  }
+}
+
+.field {
+  width: 100%;
+}
+
+.input {
+  min-width: 200px;
+  &.user-invalid {
+    border: 1px solid colors.$feedback-danger-500;
+    outline: 1px solid colors.$feedback-danger-500;
+    box-shadow: 0px 0px 4px 0px colors.$neutral-0;
+  }
+
+  &.user-invalid + .icon {
+    fill: colors.$feedback-danger-500;
+  }
+}
+
+.icon {
+  position: absolute;
+  right: spaces.$smd;
+  fill: colors.$neutral-500;
+}
+
+.hint {
+  padding-left: spaces.$smd;
+  font-weight: typography.$font-weight-regular;
+  font-size: typography.$font-size-11;
+  line-height: typography.$line-height-100;
+  color: colors.$neutral-500;
+}
+
+.error {
+  padding-left: spaces.$smd;
+  font-weight: typography.$font-weight-regular;
+  font-size: typography.$font-size-11;
+  line-height: typography.$line-height-100;
+  color: colors.$feedback-danger-700;
+}
+// .input-wrapper {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 4px;
+// }
+
+// .input-label {
+//   color: colors.$neutral-600;
+//   font-weight: typography.$font-weight-regular;
+//   font-size: typography.$font-size-14;
+//   line-height: typography.$line-height-150;
+// }
+
+// .input-label strong {
+//   color: colors.$feedback-danger-500;
+// }
+
+// .input-container {
+//   display: flex;
+//   align-items: flex-start;
+//   flex-direction: column;
+//   gap: 4px;
+
+//   &:hover .input-hint,
+//   &:focus-within .input-hint {
+//     color: colors.$primary-500;
+//   }
+// }
+
+// .input-field-container {
+//   display: flex;
+//   align-items: center;
+//   position: relative;
+// }
+
+// .input-field {
+//   height: 40px;
+//   border-radius: spaces.$smd;
+//   padding: 0 spaces.$smd;
+//   background-color: colors.$neutral-0;
+//   border: 1px solid colors.$neutral-300;
+
+//   &::placeholder {
+//     font-size: typography.$font-size-16;
+//     line-height: typography.$line-height-150;
+//     color: colors.$neutral-400;
+//   }
+
+//   &:hover,
+//   &:focus,
+//   &:focus-visible {
+//     outline: 1px solid colors.$primary-500;
+//     border: 1px solid colors.$primary-500;
+//   }
+
+//   &:focus,
+//   &:focus-visible {
+//     box-shadow: 0px 0px 4px 0px colors.$primary-500;
+//   }
+
+//   &:disabled,
+//   &:disabled:hover {
+//     background-color: colors.$neutral-50;
+//     border: 1px solid colors.$neutral-200;
+//     cursor: not-allowed;
+//     outline: none;
+//   }
+
+//    &.user-invalid {
+//     border: 1px solid colors.$feedback-danger-500;
+// 		outline: 1px solid colors.$feedback-danger-500;
+// 		box-shadow: 0px 0px 4px 0px colors.$neutral-0;
+//   }
+
+//   &:focus + .input-icon,
+//   &:hover + .input-icon {
+//     fill: colors.$primary-500;
+//   }
+
+//   &.user-invalid + .input-icon {
+//     fill: colors.$feedback-danger-500;
+//   }
+// }
+
+// .input-icon {
+//   position: absolute;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   right: spaces.$smd;
+//   fill: colors.$neutral-500;
+// }
+
+// .input-hint {
+//   padding-left: spaces.$smd;
+//   font-weight: typography.$font-weight-regular;
+//   font-size: typography.$font-size-11;
+//   line-height: typography.$line-height-100;
+//   color: colors.$neutral-500;
+
+// }
+
+// .input-error {
+//   padding-left: spaces.$smd;
+//   font-weight: typography.$font-weight-regular;
+//   font-size: typography.$font-size-11;
+//   line-height: typography.$line-height-100;
+//   color: colors.$feedback-danger-700;
+// }
