@@ -6,6 +6,8 @@ export { default as BasicLabel } from './core/label/index';
 export { default as BreakpointTracker } from './components/BreakpointTracker/BreakpointTracker';
 export { default as Button } from './components/Button/Button';
 export { default as Grid } from './components/Grid/Grid';
+export { default as Header } from './components/Header/Header';
 export { default as InputSelect } from './components/InputSelect/InputSelect';
 export { default as InputText } from './components/InputText/InputText';
+export { default as Modal } from './components/Modal/Modal';
 export { default as Stepper } from './components/Stepper/Stepper';

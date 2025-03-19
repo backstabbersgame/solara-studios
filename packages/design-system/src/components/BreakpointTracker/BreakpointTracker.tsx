@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './BreakpointTracker.module.scss';
+import { useBreakpoint } from '../../hooks/useBreakpoint';
 
 const breakpoint = {
   mobile: '767px',
@@ -19,47 +20,13 @@ const breakpoint = {
 };
 
 const BreakpointTracker = () => {
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
-
-  const updateWindowWidth = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', updateWindowWidth);
-    return () => {
-      window.removeEventListener('resize', updateWindowWidth);
-    };
-  }, []);
-
-  const getCurrentBreakpoint = () => {
-    if (windowWidth >= parseInt(breakpoint.wideDesktop)) {
-      return 'wide desktop';
-    } else if (
-      windowWidth >= parseInt(breakpoint.desktop.min) &&
-      windowWidth <= parseInt(breakpoint.desktop.max)
-    ) {
-      return 'desktop';
-    } else if (
-      windowWidth >= parseInt(breakpoint.laptop.min) &&
-      windowWidth <= parseInt(breakpoint.laptop.max)
-    ) {
-      return 'laptop';
-    } else if (
-      windowWidth >= parseInt(breakpoint.tablet.min) &&
-      windowWidth <= parseInt(breakpoint.tablet.max)
-    ) {
-      return 'tablet';
-    } else if (windowWidth <= parseInt(breakpoint.mobile)) {
-      return 'mobile';
-    }
-  };
+  const { windowWidth, currentBreakpoint } = useBreakpoint();
 
   return (
     <>
       <div className={styles.breakpointTracker}>
         <h2 className={styles.currentBreakpoint}>
-          Current breakpoint: <strong>{getCurrentBreakpoint()}</strong> (
+          Current breakpoint: <strong>{currentBreakpoint}</strong> (
           {windowWidth}px)
         </h2>
       </div>

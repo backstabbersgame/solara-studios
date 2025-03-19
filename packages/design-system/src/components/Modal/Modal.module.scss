@@ -1,0 +1,171 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/typography';
+@use '../../styles/partials/spaces';
+@use '../../styles/partials/breakpoints';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #00000005;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: colors.$neutral-0;
+}
+
+.header {
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 48px;
+  background-color: colors.$neutral-0;
+  border-bottom: 1px solid colors.$neutral-0;
+  box-shadow: 0px 4px 6px 0px #00000005;
+}
+
+.title {
+  padding: 0;
+  margin: 0;
+  font-family: typography.$heading-font;
+  font-size: typography.$font-size-16;
+  font-weight: typography.$font-weight-extra-bold;
+  line-height: typography.$line-height-120;
+}
+
+.button-close {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 20px;
+}
+
+.close {
+  fill: colors.$primary-500;
+}
+
+.list {
+  margin: 0;
+  padding: 16px 0 0 0;
+}
+
+.item {
+  padding: 0 24px;
+  list-style-type: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &.active::after {
+    height: 40px;
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: -5px;
+    width: 2px;
+    background: colors.$primary-500;
+  }
+}
+
+.button-item {
+  width: 100%;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.span {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  font-family: typography.$base-font-family;
+  font-size: typography.$font-size-16;
+  font-weight: typography.$font-weight-semi-bold;
+  line-height: typography.$line-height-100;
+  color: colors.$neutral-800;
+
+  &.active {
+    padding-left: 10px;
+  }
+}
+
+.span svg {
+  fill: colors.$neutral-400;
+}
+
+.span.active svg {
+  fill: colors.$primary-500;
+}
+
+.arrow {
+  fill: colors.$neutral-600;
+}
+
+.submenu {
+  margin: 0;
+  padding: 12px 0 0 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.submenu-item {
+  list-style-type: none;
+  font-family: typography.$base-font-family;
+  font-size: typography.$font-size-16;
+  font-weight: typography.$font-weight-semi-bold;
+  line-height: typography.$line-height-100;
+}
+
+.submenu-item a {
+  text-decoration: none;
+  color: colors.$neutral-800;
+
+  &:hover {
+    color: colors.$primary-500;
+  }
+}
+
+.line {
+  margin: 19px 0;
+  color: colors.$neutral-200;
+}
+
+.modal-footer {
+  width: 100%;
+  position: absolute;
+  bottom: 24px;
+}
+
+.button-footer {
+  width: 80%;
+  margin: 0 10%;
+}
+
+.button-logout {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 0 0 24px;
+}

@@ -6,7 +6,7 @@ import BasicButton from '../../core/button';
 
 type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'link' | 'cta';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   arrowLeft?: boolean;
   arrowRight?: boolean;
