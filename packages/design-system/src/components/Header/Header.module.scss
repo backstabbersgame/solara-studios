@@ -1,0 +1,21 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/typography';
+@use '../../styles/partials/spaces';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.side {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+// @media only screen and (min-width: breakpoint.$tablet-min) {}
+// @media only screen and (min-width: breakpoint.$tablet-min) and (max-width: breakpoint.$tablet-max) {}
+// @media only screen and (min-width: breakpoint.$laptop-min) and (max-width: breakpoint.$laptop-max) {}
+// @media only screen and (min-width: breakpoint.$desktop-min) {}
