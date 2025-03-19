@@ -1,0 +1,16 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/typography';
+@use '../../styles/partials/spaces';
+
+.header {
+  font-family: typography.$base-font-family;
+  font-weight: typography.$font-weight-regular;
+  background-color: rgba(colors.$neutral-0, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(colors.$neutral-0, 0.25);
+  padding: 0 40px;
+  height: 72px;
+  width: 88vw;
+  display: flex;
+  align-items: center;
+}
