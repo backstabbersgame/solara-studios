@@ -9,6 +9,10 @@
   border-color: transparent;
   height: 40px;
   outline-offset: 2px;
+  font-family: typography.$base-font-family;
+  font-size: typography.$font-size-16;
+  font-weight: typography.$font-weight-regular;
+  line-height: typography.$line-height-100;
 
   &:disabled,
   &:disabled:hover {
