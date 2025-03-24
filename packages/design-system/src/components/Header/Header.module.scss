@@ -1,0 +1,41 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/typography';
+@use '../../styles/partials/spaces';
+@use '../../styles/partials/breakpoints';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.icon {
+  fill: colors.$neutral-0;
+  text-shadow: 0px 0px 8px 0px #00000040;
+}
+
+// @media only screen and (min-width: breakpoints.$tablet-min) and (max-width: breakpoint.$tablet-max) {}
+@media only screen and (min-width: breakpoints.$laptop-min) and (max-width: breakpoints.$laptop-max) {
+  .header {
+    margin-top: 24px;
+  }
+
+  .side {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+@media only screen and (min-width: breakpoints.$desktop-min) {
+  .header {
+    margin-top: 24px;
+  }
+
+  .side {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+}
