@@ -6,10 +6,10 @@ const breakpoints = {
   mobile: '767px',
   tablet: {
     min: '768px',
-    max: '1024px',
+    max: '1032px',
   },
   laptop: {
-    min: '1025px',
+    min: '1033px',
     max: '1280px',
   },
   desktop: {
@@ -66,7 +66,6 @@ const useBreakpoint = (): UseBreakpointProps => {
       return 'unknown';
     };
 
-    updateWindowWidth();
     window.addEventListener('resize', updateWindowWidth);
 
     return () => {
