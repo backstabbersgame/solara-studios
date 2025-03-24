@@ -132,7 +132,6 @@ const SignUp = () => {
           isStepClickable={(currentStep) => currentStep <= step}
         />
         <SignUpForm
-          submitData={submitData}
           handleNext={handleNext}
           handleData={setSubmitData}
           step={step}
