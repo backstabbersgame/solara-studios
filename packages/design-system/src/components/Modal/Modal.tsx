@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CaretDown, CaretUp, SignOut, X } from '@phosphor-icons/react/dist/ssr';
 import styles from './Modal.module.scss';
 import Button from '../Button/Button';
 
-type SubMenuItem = {
+export type SubMenuItem = {
   label: string;
 };
 
-type ModalItem = {
+export type ModalItem = {
   icon: React.ReactNode;
   label: string;
   hasSubMenu?: boolean;
   subMenuItems?: SubMenuItem[];
 };
 
-type ModalProps = {
+export type ModalProps = {
   showHeader: boolean;
   title: string;
   isOpen: boolean;
@@ -38,8 +39,6 @@ export const Modal: React.FC<ModalProps> = ({
   footerButton,
   logoutButton,
 }) => {
-  if (typeof document === 'undefined') return null;
-
   const [isVisible, setIsVisible] = useState(isOpen);
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
 
@@ -56,7 +55,9 @@ export const Modal: React.FC<ModalProps> = ({
     setTimeout(onClose, 300);
   };
 
-  return (
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
     <div className={styles.overlay}>
       <AnimatePresence mode='wait'>
         {isVisible && (
@@ -172,7 +173,8 @@ export const Modal: React.FC<ModalProps> = ({
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </div>,
+    document.body
   );
 };
 

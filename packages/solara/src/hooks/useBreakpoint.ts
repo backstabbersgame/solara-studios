@@ -16,7 +16,8 @@ const breakpoints = {
     min: '1281px',
     max: '1440px',
   },
-  wideDesktop: '1441px',
+  wideScreen: '1441px',
+  ultraWideScreen: '1513px',
 };
 
 export interface UseBreakpointProps {
@@ -39,8 +40,11 @@ const useBreakpoint = (): UseBreakpointProps => {
     };
 
     const getCurrentBreakpoint = (width: number): string => {
-      if (width >= parseInt(breakpoints.wideDesktop)) {
-        return 'wide desktop';
+      if (width >= parseInt(breakpoints.wideScreen)) {
+        return 'ultra wide screen';
+      }
+      if (width >= parseInt(breakpoints.wideScreen)) {
+        return 'wide screen';
       }
       if (
         width >= parseInt(breakpoints.desktop.min) &&
@@ -63,9 +67,11 @@ const useBreakpoint = (): UseBreakpointProps => {
       if (width <= parseInt(breakpoints.mobile)) {
         return 'mobile';
       }
+
       return 'unknown';
     };
 
+    updateWindowWidth();
     window.addEventListener('resize', updateWindowWidth);
 
     return () => {
