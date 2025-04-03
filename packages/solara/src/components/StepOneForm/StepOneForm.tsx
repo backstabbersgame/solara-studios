@@ -7,7 +7,7 @@ import { setCustomerField } from 'src/store/customerSlice';
 import { formatCpf } from 'src/utils/formatCpf';
 import { formatPhone } from 'src/utils/formatPhone';
 import { InputText, Button } from '@solara-studios/design-system/src';
-import styles from './StepOne.module.scss';
+import styles from './StepOneForm.module.scss';
 import { stepOneSchema } from 'src/constants/validationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -22,7 +22,7 @@ type StepOneForm = {
   phone: string;
 };
 
-export const StepOne: React.FC<StepOnePros> = ({  handleNext }) => {
+export const StepOneForm: React.FC<StepOnePros> = ({ handleNext }) => {
   const dispatch = useDispatch();
   const { customer } = useSelector((state: RootState) => state.customer);
   const {
@@ -116,4 +116,4 @@ export const StepOne: React.FC<StepOnePros> = ({  handleNext }) => {
   );
 };
 
-export default StepOne;
+export default StepOneForm;
