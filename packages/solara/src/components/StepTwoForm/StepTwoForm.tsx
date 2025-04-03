@@ -12,7 +12,7 @@ import { Address } from 'src/types/address';
 import * as yup from 'yup';
 import { stepTwoSchema } from 'src/constants/validationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import styles from './StepTwo.module.scss';
+import styles from './StepTwoForm.module.scss';
 
 interface StepTwoPros {
   handleData: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,7 +20,7 @@ interface StepTwoPros {
 
 type StepTwoForm = yup.InferType<typeof stepTwoSchema>;
 
-const StepTwo: React.FC<StepTwoPros> = ({ handleData }) => {
+const StepTwoForm: React.FC<StepTwoPros> = ({ handleData }) => {
   const dispatch: AppDispatch = useDispatch();
   const { address, apiAddress } = useSelector(
     (state: RootState) => state.address
@@ -120,4 +120,4 @@ const StepTwo: React.FC<StepTwoPros> = ({ handleData }) => {
   );
 };
 
-export default StepTwo;
+export default StepTwoForm;
