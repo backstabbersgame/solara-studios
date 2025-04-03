@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import BasicHeader from '../../core/header';
 import BasicNav from '../../core/nav';
@@ -6,15 +6,21 @@ import Button from '../Button/Button';
 import styles from './Header.module.scss';
 import { useBreakpoint } from '../../hooks/useBreakpoint';
 import { List } from '@phosphor-icons/react/dist/ssr';
+import Modal, { ModalProps } from '../Modal/Modal';
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
   links: { name: string; href: string }[];
+  modal: ModalProps;
+  openMenuModal: boolean;
+  handleMenuModal: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   links,
+  modal,
+  openMenuModal,
+  handleMenuModal,
   className,
-  ...props
 }) => {
   const { currentBreakpoint } = useBreakpoint();
   const isMobile = currentBreakpoint === 'mobile';
@@ -29,10 +35,15 @@ export const Header: React.FC<HeaderProps> = ({
       />
 
       {isMobile ? (
-        <List
-          size={24}
-          className={styles.icon}
-        />
+        <button
+          onClick={handleMenuModal}
+          className={styles.list}
+        >
+          <List
+            size={24}
+            className={styles.icon}
+          />
+        </button>
       ) : (
         <div className={styles.side}>
           <BasicNav
@@ -48,6 +59,19 @@ export const Header: React.FC<HeaderProps> = ({
             Minha Conta
           </Button>
         </div>
+      )}
+      {openMenuModal && (
+        <Modal
+          showHeader={modal.showHeader}
+          title={modal.title}
+          isOpen={modal.isOpen}
+          onClose={handleMenuModal}
+          items={modal.items}
+          activeItem={modal.activeItem}
+          onItemSelect={modal.onItemSelect}
+          footerButton={modal.footerButton}
+          logoutButton={modal.logoutButton}
+        />
       )}
     </BasicHeader>
   );

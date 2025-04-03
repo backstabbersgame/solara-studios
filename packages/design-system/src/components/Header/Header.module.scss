@@ -8,6 +8,17 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 16px;
+  position: absolute;
+  z-index: 1;
+}
+
+.list {
+  background-color: transparent;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .icon {
@@ -15,7 +26,13 @@
   text-shadow: 0px 0px 8px 0px #00000040;
 }
 
-// @media only screen and (min-width: breakpoints.$tablet-min) and (max-width: breakpoint.$tablet-max) {}
+@media only screen and (min-width: breakpoints.$tablet-min) and (max-width: breakpoints.$tablet-max) {
+  .side {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+}
 @media only screen and (min-width: breakpoints.$laptop-min) and (max-width: breakpoints.$laptop-max) {
   .header {
     margin-top: 24px;
@@ -39,3 +56,4 @@
     gap: 24px;
   }
 }
+
