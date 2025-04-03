@@ -16,7 +16,8 @@ const breakpoint = {
     min: '1281px',
     max: '1440px',
   },
-  wideDesktop: '1441px',
+  wideScreen: '1441px',
+  ultraWideScreen: '1513px',
 };
 
 const BreakpointTracker = () => {

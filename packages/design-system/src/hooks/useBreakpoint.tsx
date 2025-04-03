@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const breakpoints = {
   mobile: '767px',
@@ -14,50 +14,62 @@ const breakpoints = {
     min: '1281px',
     max: '1440px',
   },
-  wideDesktop: '1441px',
+  wideScreen: '1441px',
+  ultraWideScreen: '1513px',
 };
 
-const getBreakpoint = (width: number): string => {
-  if (width >= parseInt(breakpoints.wideDesktop)) {
-    return 'wide desktop';
-  }
-  if (
-    width >= parseInt(breakpoints.desktop.min) &&
-    width <= parseInt(breakpoints.desktop.max)
-  ) {
-    return 'desktop';
-  }
-  if (
-    width >= parseInt(breakpoints.laptop.min) &&
-    width <= parseInt(breakpoints.laptop.max)
-  ) {
-    return 'laptop';
-  }
-  if (
-    width >= parseInt(breakpoints.tablet.min) &&
-    width <= parseInt(breakpoints.tablet.max)
-  ) {
-    return 'tablet';
-  }
-  if (width <= parseInt(breakpoints.mobile)) {
-    return 'mobile';
-  }
-  return 'unknown';
-};
+export interface UseBreakpointProps {
+  windowWidth: number;
+  currentBreakpoint: string;
+}
 
-export const useBreakpoint = () => {
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
-  const [currentBreakpoint, setCurrentBreakpoint] = useState<string>(
-    getBreakpoint(window.innerWidth)
+export const useBreakpoint = (): UseBreakpointProps => {
+  const [windowWidth, setWindowWidth] = useState<number>(
+    typeof window !== 'undefined' ? window.innerWidth : 0
   );
+  const [currentBreakpoint, setCurrentBreakpoint] = useState<string>('unknown');
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const updateWindowWidth = () => {
       const newWidth = window.innerWidth;
       setWindowWidth(newWidth);
-      setCurrentBreakpoint(getBreakpoint(newWidth));
+      setCurrentBreakpoint(getCurrentBreakpoint(newWidth));
     };
 
+    const getCurrentBreakpoint = (width: number): string => {
+      if (width >= parseInt(breakpoints.wideScreen)) {
+        return 'ultra wide screen';
+      }
+      if (width >= parseInt(breakpoints.wideScreen)) {
+        return 'wide screen';
+      }
+      if (
+        width >= parseInt(breakpoints.desktop.min) &&
+        width <= parseInt(breakpoints.desktop.max)
+      ) {
+        return 'desktop';
+      }
+      if (
+        width >= parseInt(breakpoints.laptop.min) &&
+        width <= parseInt(breakpoints.laptop.max)
+      ) {
+        return 'laptop';
+      }
+      if (
+        width >= parseInt(breakpoints.tablet.min) &&
+        width <= parseInt(breakpoints.tablet.max)
+      ) {
+        return 'tablet';
+      }
+      if (width <= parseInt(breakpoints.mobile)) {
+        return 'mobile';
+      }
+
+      return 'unknown';
+    };
+    updateWindowWidth();
     window.addEventListener('resize', updateWindowWidth);
 
     return () => window.removeEventListener('resize', updateWindowWidth);
