@@ -26,8 +26,8 @@ const Game = () => {
       <div className={styles['game-container']}>
         <section className={styles.header}>
           <Image
-            width={26}
-            height={26}
+            width={isMobileOrTablet ? 26 : 32}
+            height={isMobileOrTablet ? 26 : 32}
             src='/images/rocket.svg'
             alt='Foguete'
           />
