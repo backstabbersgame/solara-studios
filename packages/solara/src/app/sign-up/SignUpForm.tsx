@@ -1,6 +1,6 @@
 import React from 'react';
-import StepOne from 'src/components/StepOne/StepOne';
-import StepTwo from 'src/components/StepTwo/StepTwo';
+import StepOne from 'src/components/StepOneForm/StepOneForm';
+import StepTwo from 'src/components/StepTwoForm/StepTwoForm';
 
 interface SignUpFormProps {
   handleNext: () => void;

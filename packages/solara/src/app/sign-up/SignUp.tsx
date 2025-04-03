@@ -7,7 +7,7 @@ import { Grid, Stepper } from '@solara-studios/design-system/src';
 import BackButton from 'src/components/BackButton/BackButton';
 import Image from 'next/image';
 import useBreakpoint from 'src/hooks/useBreakpoint';
-import SignUpForm from './components/SignUpForm';
+import SignUpForm from './SignUpForm';
 import { resetCustomer, updateCustomer } from 'src/store/customerSlice';
 import { sendCustomerData } from 'src/store/customerThunk';
 import { resetAddress } from 'src/store/addressSlice';
