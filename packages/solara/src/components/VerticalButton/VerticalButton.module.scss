@@ -1,0 +1,14 @@
+@use '@solara-studios/design-system/src/styles/partials/colors' as colors;
+@use '@solara-studios/design-system/src/styles/partials/breakpoints' as
+  breakpoints;
+
+.btn {
+  width: 48px;
+  align-self: stretch;
+  background-color: rgba(colors.$neutral-0, 0.15);
+  border: 1px solid rgba(colors.$neutral-0, 0.25);
+}
+
+.btn svg {
+  fill: colors.$neutral-500;
+}
