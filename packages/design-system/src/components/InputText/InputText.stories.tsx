@@ -18,6 +18,7 @@ const Template: StoryFn<typeof InputText> = (args) => <InputText {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   label: 'Label',
+  id: 'Label',
   placeholder: 'Placeholder',
   type: 'text',
   hint: 'Hint',
@@ -28,6 +29,7 @@ Default.args = {
 export const WithError = Template.bind({});
 WithError.args = {
   label: 'Label',
+  id: 'Label',
   placeholder: 'Placeholder',
   error: 'Error',
   valid: false,

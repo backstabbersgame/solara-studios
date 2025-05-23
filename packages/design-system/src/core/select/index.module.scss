@@ -2,37 +2,38 @@
 @use '../../styles/partials/typography';
 @use '../../styles/partials/spaces';
 
-.arrow .select {
+// .select {
+//   appearance: none;
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   $icon-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23000000' viewBox='0 0 256 256'%3E%3Cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'/%3E%3C/svg%3E");
+//   background-image: $icon-svg;
+//   background-repeat: no-repeat;
+//   background-position: right 12px center;
+//   background-size: 16px 16px;
+// }
+
+.select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   $icon-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23000000' viewBox='0 0 256 256'%3E%3Cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'/%3E%3C/svg%3E");
   background-image: $icon-svg;
   background-repeat: no-repeat;
-  background-position: right spaces.$smd center;
+  background-position: right 12px center;
   background-size: 16px 16px;
-}
 
-.arrow.hide {
-  background-image: none;
-}
-
-.select {
-  min-width: 150px;
   height: 40px;
-  border-radius: spaces.$smd;
+  width: 100%;
+  border-radius: 12px;
   background-color: colors.$neutral-0;
   border: 1px solid colors.$neutral-300;
-  padding: 0 spaces.$smd;
+  padding: 0 12px;
   color: colors.$neutral-800;
   font-family: typography.$base-font-family;
   font-size: typography.$font-size-16;
   line-height: typography.$line-height-150;
   font-weight: typography.$font-weight-regular;
-
-  &::placeholder {
-    color: colors.$neutral-400;
-  }
 
   &:hover,
   &:focus,
@@ -49,7 +50,25 @@
   }
 }
 
-.arrow .select:disabled {
+.select.hide {
+  $icon-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='transparent' viewBox='0 0 256 256'%3E%3Cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'/%3E%3C/svg%3E");
+  background-image: $icon-svg;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+  padding:  12px;
+  // min-width: auto;
+  // min-height: auto;
+}
+
+.select.placeholder{
+  color: colors.$neutral-400;
+}
+
+.select:disabled {
   background-color: colors.$neutral-50;
   border: 1px solid colors.$neutral-200;
   cursor: not-allowed;
@@ -80,4 +99,8 @@
   border: 1px solid colors.$feedback-danger-500;
   outline: 1px solid colors.$feedback-danger-500;
   box-shadow: 0px 0px 4px 0px colors.$neutral-0;
+}
+
+.select[multiple] {
+  overflow-y: hidden;
 }

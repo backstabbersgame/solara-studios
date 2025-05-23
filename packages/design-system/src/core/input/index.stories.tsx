@@ -43,5 +43,5 @@ export const Error = Template.bind({});
 Error.args = {
   required: true,
   type: 'email',
-  value: 'Text',
+  value: '',
 };

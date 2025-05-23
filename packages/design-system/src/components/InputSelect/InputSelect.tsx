@@ -1,79 +1,109 @@
-import React, { SelectHTMLAttributes } from 'react';
+import React, { SelectHTMLAttributes, useState } from 'react';
 import styles from './InputSelect.module.scss';
+import BasicLabel from '../../core/label';
+import BasicSelect from '../../core/select';
 
 export interface InputTextProps
   extends SelectHTMLAttributes<HTMLSelectElement> {
-  /** Label */
   label?: string;
-  /** Input placeholder */
   placeholder?: string;
-  /** Options */
-  options?: { value: string; label: string }[];
-  /** Hint */
+  options: { value: string; label: string; disabled?: boolean }[];
   hint?: string;
-  /** Error */
   error?: string;
-  /** Disable/Enable input */
-  isDisabled?: boolean;
-  /** Disable/Enable required */
-  isRequired?: boolean;
+  required?: boolean;
+  disabled?: boolean;
 }
 
-const InputSelect = ({
-  label = 'Label',
-  placeholder = 'Placeholder',
+const InputSelect: React.FC<InputTextProps> = ({
+  label,
+  placeholder,
   options,
-  hint = 'Hint',
+  hint,
   error,
-  isDisabled = false,
-  isRequired = false,
+  required = false,
+  disabled = false,
+  id,
+  className,
   ...props
-}: InputTextProps) => {
+}) => {
   return (
-    <div className='select-wrapper'>
+    <div className={styles.container}>
       {label && (
-        <label className={styles['select-label']}>
+        <BasicLabel htmlFor={id}>
           {label}
-          {isRequired && <strong> *</strong>}
-        </label>
+          {required && <BasicLabel className={styles.required}></BasicLabel>}
+        </BasicLabel>
       )}
-      <div className='select-container'>
-        <div className='select-field-container'>
-          <select
-            className={`${styles['select-field']} ${
-              error ? styles['user-invalid'] : ''
-            }`}
-            disabled={isDisabled}
-            required={isRequired}
-            aria-invalid={!!error}
-            aria-describedby={label}
-            {...props}
-          >
-            <option
-              value={placeholder}
-              disabled
-              selected
-            >
-              {placeholder}
-            </option>
-            {options?.map((option) => (
-              <option
-                key={option.value}
-                value={option.value}
-              >
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </div>
-        {error ? (
-          <label className={styles['select-error']}>{error}</label>
-        ) : (
-          hint && <label className={styles['select-hint']}>{hint}</label>
-        )}
+      <div className={styles.field}>
+        <BasicSelect
+          id={id}
+          options={options}
+          disabled={disabled}
+          {...props}
+        />
       </div>
+
+      {hint && (
+        <span
+          id={`${id}-hint`}
+          className={styles.hint}
+        >
+          {hint}
+        </span>
+      )}
+      {error && <span className={styles.error}>{error}</span>}
     </div>
   );
+
+  // return (
+  //   <div className={styles['select-wrapper']}>
+  //     {label && (
+  //       <label className={styles['select-label']}>
+  //         {label}
+  //         {isRequired && <strong> *</strong>}
+  //       </label>
+  //     )}
+  //     <div className={styles['select-container']}>
+  //       <div className={styles['select-field-container']}>
+  //         <select
+  //           className={`${styles['select-field']} ${
+  //             error ? styles['user-invalid'] : ''
+  //           }
+  //                ${className || ''}
+  //             ${selected === '' ? styles['placeholder'] : ''}
+  //           `}
+  //           onChange={(e) => setSelected(e.target.value)}
+  //           disabled={isDisabled}
+  //           required={isRequired}
+  //           aria-invalid={!!error}
+  //           aria-describedby={label}
+  //           defaultValue=''
+  //           {...props}
+  //         >
+  //           <option
+  //             value={''}
+  //             disabled
+  //           >
+  //             {placeholder}
+  //           </option>
+  //           {options?.map((option) => (
+  //             <option
+  //               key={option.value}
+  //               value={option.value}
+  //             >
+  //               {option.label}
+  //             </option>
+  //           ))}
+  //         </select>
+  //         {error ? (
+  //           <label className={styles['select-error']}>{error}</label>
+  //         ) : (
+  //           hint && <label className={styles['select-hint']}>{hint}</label>
+  //         )}
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default InputSelect;

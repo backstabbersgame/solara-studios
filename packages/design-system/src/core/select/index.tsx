@@ -1,34 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './index.module.scss';
 
 type BasicSelectProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
-  options: { value: string; label: string }[];
-  isMultiple?: boolean;
+  options: { value: string; label: string; disabled?: boolean }[];
+  placeholder?: string;
+  multiple?: boolean;
 };
 
 export const BasicSelect: React.FC<BasicSelectProps> = ({
   options,
-  isMultiple = false,
+  placeholder,
+  multiple = false,
   className,
   ...props
 }) => {
+  const [selected, setSelected] = useState('');
+
   return (
-    <div className={`${styles.arrow} ${isMultiple ? 'hide-arrow' : ''}`}>
-      <select
-        className={`${styles.select} ${className || ''}`}
-        multiple={isMultiple}
-        {...props}
-      >
-        {options.map((option) => (
-          <option
-            key={option.value}
-            value={option.value}
-          >
-            {option.label}
-          </option>
-        ))}
-      </select>
-    </div>
+    <select
+      className={`${styles.select}  ${selected === '' ? styles.placeholder : ''}
+        ${multiple ? styles.hide : ''}
+        ${className || ''}`}
+      multiple={multiple}
+      onChange={(e) => setSelected(e.target.value)}
+      defaultValue=''
+      {...props}
+    >
+      {!multiple && placeholder && (
+        <option
+          value={''}
+          disabled
+        >
+          {placeholder}
+        </option>
+      )}
+      {options.map((option) => (
+        <option
+          key={option.value}
+          value={option.value}
+          disabled={option.disabled}
+        >
+          {option.label}
+        </option>
+      ))}
+    </select>
   );
 };
 

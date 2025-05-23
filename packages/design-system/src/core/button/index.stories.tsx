@@ -26,3 +26,10 @@ Disabled.args = {
   type: 'button',
   disabled: true,
 };
+
+export const AsLink = Template.bind({});
+AsLink.args = {
+  children: 'Go to Example',
+  href: 'https://www.instagram.com/',
+  target: '_blank',
+};

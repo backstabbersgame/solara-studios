@@ -6,8 +6,8 @@ import useBreakpoint from 'src/hooks/useBreakpoint';
 
 const About = () => {
   const { currentBreakpoint } = useBreakpoint();
-  const isMobileOrTablet =
-    currentBreakpoint === 'mobile' || currentBreakpoint === 'tablet';
+  const isMobile = currentBreakpoint === 'mobile';
+  const isMobileOrTablet = isMobile || currentBreakpoint === 'tablet';
 
   return (
     <>
@@ -29,8 +29,8 @@ const About = () => {
           <div className={styles['about-content']}>
             <div className={styles.picture}>
               <Image
-                width={isMobileOrTablet ? 356.64 : 524}
-                height={isMobileOrTablet ? 237.56 : 288}
+                width={isMobile ? 356.64 : 524}
+                height={isMobile ? 237.56 : 288}
                 src='/images/people.png'
                 alt='Pessoas abraçadas sorrindo'
               />
@@ -39,7 +39,9 @@ const About = () => {
               <p className={styles['about-p']}>
                 {`Em 2019, um grupo de amigos se vê diante de uma ideia que tinha crescido para
                 além deles. Juntando o desejo de criar uma experiência divertida entre amigos e a
-                vontade de representar o mercado de jogos pernambucanos no Brasil, nasce a `}<strong>Solara</strong>{`, 
+                vontade de representar o mercado de jogos pernambucanos no Brasil, nasce a `}
+                <strong>Solara</strong>
+                {`, 
                 um estúdio de jogos que tem como foco a diversão, a diversidade e a representatividade.`}
               </p>
               <div className={styles['about-data']}>

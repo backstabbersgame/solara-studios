@@ -8,7 +8,7 @@ import VerticalButton from 'src/components/VerticalButton/VerticalButton';
 const Game = () => {
   const { currentBreakpoint } = useBreakpoint();
   const isMobileOrTablet =
-    currentBreakpoint === 'mobile' || currentBreakpoint === 'tablet';
+    currentBreakpoint === 'mobile';// || currentBreakpoint === 'tablet';
   const imageSrc = isMobileOrTablet
     ? '/images/mobile/backstabbers-expansion.svg'
     : '/images/desktop/backstabbers-expansion.svg';
@@ -26,8 +26,8 @@ const Game = () => {
       <div className={styles['game-container']}>
         <section className={styles.header}>
           <Image
-            width={26}
-            height={26}
+            width={isMobileOrTablet ? 26 : 32}
+            height={isMobileOrTablet ? 26 : 32}
             src='/images/rocket.svg'
             alt='Foguete'
           />
