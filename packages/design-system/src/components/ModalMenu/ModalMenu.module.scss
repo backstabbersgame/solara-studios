@@ -59,25 +59,51 @@
 .close {
   fill: colors.$primary-500;
 }
+.nav {
+  padding: 0 24px;
+  margin: 16px 0 0 0;
+}
 
 .list {
   margin: 0;
-  padding: 16px 0 0 0;
+  padding: 0;
 }
 
 .item {
-  padding: 0 24px;
+  padding: 0;
+  min-height: 40px;
   list-style-type: none;
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+   margin: 0; 
+  transition: none; 
+
+  &.active {
+    padding-left: 11px;
+  }
 
   &.active::after {
     height: 40px;
     content: '';
     position: absolute;
-    left: 24px;
-    top: -5px;
+    left: 0;
+    top: 0;
+    width: 2px;
+    background: colors.$primary-500;
+  }
+
+  &.submenu-open {
+    padding-left: 11px;
+  }
+
+  &.submenu-open::after {
+    height: 40px;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 2px;
     background: colors.$primary-500;
   }
@@ -88,34 +114,40 @@
   padding: 0;
   background-color: transparent;
   border: none;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &.active {
+    min-height: 40px;
+  }
 }
 
-.span {
+.icon-label {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+}
+
+.icon-label svg {
+  fill: colors.$neutral-400;
+}
+
+.icon-label.active svg {
+  fill: colors.$primary-500;
+}
+
+.label {
   display: flex;
   align-items: center;
   gap: 16px;
+  height: 40px;
 
   font-family: typography.$base-font-family;
   font-size: typography.$font-size-16;
   font-weight: typography.$font-weight-semi-bold;
   line-height: typography.$line-height-100;
   color: colors.$neutral-800;
-
-  &.active {
-    padding-left: 10px;
-  }
-}
-
-.span svg {
-  fill: colors.$neutral-400;
-}
-
-.span.active svg {
-  fill: colors.$primary-500;
 }
 
 .arrow {
@@ -124,7 +156,7 @@
 
 .submenu {
   margin: 0;
-  padding: 12px 0 0 56px;
+  padding: 0 0 0 50px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -148,7 +180,7 @@
 }
 
 .line {
-  margin: 19px 0;
+  margin: 12px 0;
   color: colors.$neutral-200;
 }
 

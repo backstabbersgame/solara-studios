@@ -1,18 +1,18 @@
 import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
-import BasicInput from './index';
+import BasicTextArea from './index';
 
 export default {
-  title: 'Core/BasicInput',
-  component: BasicInput,
+  title: 'Core/BasicTextArea',
+  component: BasicTextArea,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} as Meta<typeof BasicInput>;
+} as Meta<typeof BasicTextArea>;
 
-const Template: StoryFn<typeof BasicInput> = (args) => {
-  return <BasicInput {...args} />;
+const Template: StoryFn<typeof BasicTextArea> = (args) => {
+  return <BasicTextArea {...args} />;
 };
 
 export const Default = Template.bind({});
@@ -42,6 +42,6 @@ DisabledWithText.args = {
 export const Error = Template.bind({});
 Error.args = {
   required: true,
-  type: 'email',
+  type: 'number',
   value: '',
 };

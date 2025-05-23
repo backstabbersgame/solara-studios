@@ -1,26 +1,64 @@
 import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import Header from './Header';
+import { Global, css } from '@storybook/theming';
 
 export default {
   title: 'Components/Header',
   component: Header,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
+    backgrounds: {
+      default: 'dark',
+    },
   },
   tags: ['autodocs'],
-  argTypes: {},
-  args: {},
+  decorators: [
+    (Story) => (
+      <>
+        <Global
+          styles={css`
+            #storybook-root {
+              padding: 0 !important;
+              margin: 0 !important;
+            }
+          `}
+        />
+        <Story />
+      </>
+    ),
+  ],
 } as Meta<typeof Header>;
 
-const Template: StoryFn<typeof Header> = (args) => <Header {...args} />;
+type Story = StoryObj<typeof Header>;
 
-export const Default = Template.bind({});
-Default.args = {
-  links: [
-    { name: 'Início', href: '/' },
-    { name: 'Jogos', href: '/about' },
-    { name: 'Lojinha', href: '/services' },
-    { name: 'Contato', href: '/contact' },
-  ],
+const basicLinks = [
+  { name: 'Início', href: '/' },
+  { name: 'Jogos', href: '/jogos' },
+  { name: 'Lojinha', href: '/lojinha' },
+  { name: 'Contato', href: '/contato' },
+];
+
+export const DesktopView: Story = {
+  args: {
+    links: basicLinks,
+    onAccountClick: () => alert('Minha conta clicado'),
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'desktop',
+    },
+  },
+};
+
+export const MobileView: Story = {
+  args: {
+    links: basicLinks,
+    onMenuClick: () => alert('Modal mobile'),
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1',
+    },
+  },
 };

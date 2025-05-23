@@ -27,16 +27,12 @@
   font-size: typography.$font-size-14;
   line-height: typography.$line-height-150;
   color: colors.$neutral-500;
+  font-family: typography.$base-font-family;
 
   &.selected {
     background: colors.$accent-500;
     color: colors.$neutral-0;
   }
-
-  // &:active {
-  //   background: colors.$accent-500;
-  //   color: colors.$neutral-0;
-  // }
 
   &:hover {
     border-color: colors.$accent-100;
@@ -46,6 +42,7 @@
 .stepLabel {
   margin-left: 8px;
   color: colors.$neutral-500;
+  font-family: typography.$base-font-family;
   font-size: typography.$font-size-14;
   font-weight: typography.$font-weight-regular;
   line-height: typography.$line-height-150;

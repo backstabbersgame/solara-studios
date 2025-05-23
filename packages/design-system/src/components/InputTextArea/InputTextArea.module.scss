@@ -1,0 +1,85 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/typography';
+@use '../../styles/partials/spaces';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  div:hover,
+  div:focus,
+  div:focus-visible,
+  div:focus-within {
+    ~ .hint {
+      color: colors.$primary-500;
+      font-family: typography.$base-font-family;
+    }
+  }
+}
+
+.required {
+  color: colors.$feedback-danger-500;
+  font-family: typography.$base-font-family;
+}
+
+.container div {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.field {
+  width: 100%;
+}
+
+.textarea {
+  min-width: 200px;
+
+  &.user-invalid {
+    border: 1px solid colors.$feedback-danger-500;
+    outline: 1px solid colors.$feedback-danger-500;
+    box-shadow: 0px 0px 4px 0px colors.$neutral-0;
+  }
+}
+
+.sub-field {
+  width: 100%;
+}
+
+.hint {
+  padding-left: spaces.$smd;
+  font-family: typography.$base-font-family;
+  font-weight: typography.$font-weight-regular;
+  font-size: typography.$font-size-11;
+  line-height: typography.$line-height-100;
+  color: colors.$neutral-500;
+}
+
+.error {
+  padding-left: spaces.$smd;
+  font-family: typography.$base-font-family;
+  font-weight: typography.$font-weight-regular;
+  font-size: typography.$font-size-11;
+  line-height: typography.$line-height-100;
+  color: colors.$feedback-danger-700;
+}
+
+.count {
+  margin-left: auto;
+}
+
+.current,
+.maximum {
+  font-family: typography.$base-font-family;
+  font-weight: typography.$font-weight-regular;
+  font-size: typography.$font-size-11;
+}
+
+.current {
+  color: colors.$neutral-500;
+}
+
+.maximum {
+  color: colors.$neutral-400;
+}

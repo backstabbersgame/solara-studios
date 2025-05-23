@@ -1,19 +1,21 @@
 import { Meta, StoryFn } from '@storybook/react';
-import InputText from './InputText';
+import InputTextArea from './InputTextArea';
 import React from 'react';
 
 export default {
-  title: 'Components/InputText',
-  component: InputText,
+  title: 'Components/InputTextArea',
+  component: InputTextArea,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   argTypes: {},
   args: {},
-} as Meta<typeof InputText>;
+} as Meta<typeof InputTextArea>;
 
-const Template: StoryFn<typeof InputText> = (args) => <InputText {...args} />;
+const Template: StoryFn<typeof InputTextArea> = (args) => (
+  <InputTextArea {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {

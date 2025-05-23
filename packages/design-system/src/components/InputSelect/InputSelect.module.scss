@@ -2,82 +2,141 @@
 @use '../../styles/partials/typography';
 @use '../../styles/partials/spaces';
 
-.select-wrapper {
+.container {
   display: flex;
   flex-direction: column;
   gap: 4px;
+
+  div:hover,
+  div:focus,
+  div:focus-visible,
+  div:focus-within {
+    ~ .hint {
+      color: colors.$primary-500;
+      font-family: typography.$base-font-family;
+    }
+  }
 }
 
-.select-label {
-  color: colors.$neutral-600;
-  font-weight: typography.$font-weight-regular;
-  font-size: typography.$font-size-14;
-  line-height: typography.$line-height-150;
-}
-
-.select-label strong {
+.required {
   color: colors.$feedback-danger-500;
+  font-family: typography.$base-font-family;
 }
 
-.select-container {
+.field {
   display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.select-field-container {
-  display: inline-block;
   align-items: center;
   position: relative;
+  width: 100%;
 }
 
-.select-field {
-  height: 40px;
-  border-radius: spaces.$smd;
-  background-color: colors.$neutral-0;
-  border: 1px solid colors.$neutral-300;
-  gap: spaces.$smd;
-
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  padding: 10px 120px 10px 12px;
-  $icon-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23000000' viewBox='0 0 256 256'%3E%3Cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'/%3E%3C/svg%3E");
-  background-image: $icon-svg;
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  background-size: 16px 16px;
-
-  &:hover,
-  &:focus,
-  &:focus-visible {
-    outline: 1px solid colors.$primary-500;
-    border: 1px solid colors.$primary-500;
-  }
-
-  &.user-invalid {
-    border: 1px solid colors.$feedback-danger-500;
-  }
-}
-
-.select-field option {
-  padding-left: 10px;
-}
-
-.select-hint {
+.hint {
   padding-left: spaces.$smd;
+  font-family: typography.$base-font-family;
   font-weight: typography.$font-weight-regular;
   font-size: typography.$font-size-11;
   line-height: typography.$line-height-100;
   color: colors.$neutral-500;
 }
 
-.select-error {
+.error {
   padding-left: spaces.$smd;
+  font-family: typography.$base-font-family;
   font-weight: typography.$font-weight-regular;
   font-size: typography.$font-size-11;
   line-height: typography.$line-height-100;
   color: colors.$feedback-danger-700;
 }
+// .select-wrapper {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 4px;
+// }
 
+// .select-label {
+//   color: colors.$neutral-600;
+//   font-family: typography.$base-font-family;
+//   font-weight: typography.$font-weight-regular;
+//   font-size: typography.$font-size-14;
+//   line-height: typography.$line-height-150;
+// }
+
+// .select-label strong {
+//   color: colors.$feedback-danger-500;
+// }
+
+// .select-container {
+//   display: flex;
+//   align-items: flex-start;
+//   flex-direction: column;
+//   gap: 4px;
+// }
+
+// .select-field-container {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 4px;
+
+//   & .select-field:hover ~ .select-hint,
+//   & .select-field:focus ~ .select-hint,
+//   & .select-field:focus-visible ~ .select-hint,
+//   & .select-field:focus-within ~ .select-hint {
+//     color: colors.$primary-500;
+//     font-family: typography.$base-font-family;
+//   }
+// }
+
+// .select-field {
+//   height: 40px;
+//   border-radius: spaces.$smd;
+//   background-color: colors.$neutral-0;
+//   border: 1px solid colors.$neutral-300;
+//   appearance: none;
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   padding: 10px 120px 10px 12px;
+//   $icon-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23000000' viewBox='0 0 256 256'%3E%3Cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'/%3E%3C/svg%3E");
+//   background-image: $icon-svg;
+//   background-repeat: no-repeat;
+//   background-position: right 12px center;
+//   background-size: 16px 16px;
+//   color: colors.$neutral-800;
+
+//   &:hover,
+//   &:focus,
+//   &:focus-visible,
+//   &:focus-within {
+//     outline: 1px solid colors.$primary-500;
+//     border: 1px solid colors.$primary-500;
+//   }
+
+//   &.user-invalid {
+//     border: 1px solid colors.$feedback-danger-500;
+//   }
+// }
+
+// .select-field.placeholder{
+//   color: colors.$neutral-400;
+// }
+
+// .select-field option {
+//   padding-left: 10px;
+// }
+
+// .select-hint {
+//   padding-left: spaces.$smd;
+//   font-family: typography.$base-font-family;
+//   font-weight: typography.$font-weight-regular;
+//   font-size: typography.$font-size-11;
+//   line-height: typography.$line-height-100;
+//   color: colors.$neutral-500;
+// }
+
+// .select-error {
+//   padding-left: spaces.$smd;
+//   font-family: typography.$base-font-family;
+//   font-weight: typography.$font-weight-regular;
+//   font-size: typography.$font-size-11;
+//   line-height: typography.$line-height-100;
+//   color: colors.$feedback-danger-700;
+// }

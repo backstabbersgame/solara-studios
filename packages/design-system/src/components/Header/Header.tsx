@@ -6,24 +6,38 @@ import Button from '../Button/Button';
 import styles from './Header.module.scss';
 import { useBreakpoint } from '../../hooks/useBreakpoint';
 import { List } from '@phosphor-icons/react/dist/ssr';
-import Modal, { ModalProps } from '../Modal/Modal';
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
   links: { name: string; href: string }[];
-  modal: ModalProps;
-  openMenuModal: boolean;
-  handleMenuModal: () => void;
+  activeLink?: string;
+  onLogoClick?: () => void;
+  onMenuClick?: () => void;
+  onLinkClick?: (href: string) => void;
+  onAccountClick?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   links,
-  modal,
-  openMenuModal,
-  handleMenuModal,
-  className,
+  activeLink,
+  onLogoClick,
+  onMenuClick,
+  onLinkClick,
+  onAccountClick,
 }) => {
   const { currentBreakpoint } = useBreakpoint();
   const isMobile = currentBreakpoint === 'mobile';
+
+  const handleLogoClick = () => {
+    onLogoClick?.();
+  };
+
+  const handleMenuClick = () => {
+    onMenuClick?.();
+  };
+
+  const handleAccountClick = () => {
+    onAccountClick?.();
+  };
 
   return (
     <BasicHeader className={styles.header}>
@@ -32,11 +46,13 @@ export const Header: React.FC<HeaderProps> = ({
         height={isMobile ? 32 : 40}
         src='/images/solara-horizontal-light.svg'
         alt='Solara Studios Logo with light colors'
+        onClick={handleLogoClick}
+        style={{ cursor: 'pointer' }}
       />
 
       {isMobile ? (
         <button
-          onClick={handleMenuModal}
+          onClick={handleMenuClick}
           className={styles.list}
         >
           <List
@@ -50,28 +66,17 @@ export const Header: React.FC<HeaderProps> = ({
             className={styles.nav}
             links={links}
             mode='light'
-            activeLink='/'
+            activeLink={activeLink}
+            onLinkClick={onLinkClick}
           />
           <Button
             variant='cta'
             type='button'
+            onClick={handleAccountClick}
           >
             Minha Conta
           </Button>
         </div>
-      )}
-      {openMenuModal && (
-        <Modal
-          showHeader={modal.showHeader}
-          title={modal.title}
-          isOpen={modal.isOpen}
-          onClose={handleMenuModal}
-          items={modal.items}
-          activeItem={modal.activeItem}
-          onItemSelect={modal.onItemSelect}
-          footerButton={modal.footerButton}
-          logoutButton={modal.logoutButton}
-        />
       )}
     </BasicHeader>
   );

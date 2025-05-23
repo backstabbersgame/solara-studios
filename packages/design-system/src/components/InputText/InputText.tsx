@@ -9,6 +9,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   hint?: string;
   error?: string;
   required?: boolean;
+  disabled?: boolean;
   showIcon?: boolean;
 }
 

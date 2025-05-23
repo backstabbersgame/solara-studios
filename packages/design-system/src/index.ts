@@ -9,5 +9,7 @@ export { default as Grid } from './components/Grid/Grid';
 export { default as Header } from './components/Header/Header';
 export { default as InputSelect } from './components/InputSelect/InputSelect';
 export { default as InputText } from './components/InputText/InputText';
-export { default as Modal } from './components/Modal/Modal';
+export { default as InputTextArea } from './components/InputTextArea/InputTextArea';
+export { default as ModalMenu } from './components/ModalMenu/ModalMenu';
 export { default as Stepper } from './components/Stepper/Stepper';
+export { default as Upload } from './components/Upload/Upload';

@@ -12,17 +12,13 @@ export default {
 } as Meta<typeof BasicSelect>;
 
 const Template: StoryFn<typeof BasicSelect> = (args) => {
-  return (
-    <BasicSelect
-      isMultiple={args.isMultiple}
-      {...args}
-    />
-  );
+  return <BasicSelect {...args} />;
 };
 
 export const Default = Template.bind({});
 Default.args = {
   label: 'Label',
+  placeholder: 'Select option',
   options: [
     { value: 'option1', label: 'Option 1' },
     { value: 'option2', label: 'Option 2' },
@@ -39,6 +35,5 @@ Disabled.args = {
 export const Multiple = Template.bind({});
 Multiple.args = {
   ...Default.args,
-  isMultple: true,
   multiple: true,
 };
