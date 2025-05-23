@@ -18,6 +18,13 @@ export default function RootLayout({
       lang='en'
       suppressHydrationWarning
     >
+      <head>
+        <script src='https://viewport-tester.com/delta/static/viewport-tester/js/utils/ChildFrame.js'></script>
+        <link
+          rel='stylesheet'
+          href='https://viewport-tester.com/delta/static/viewport-tester/css/utils/childFrame.css'
+        ></link>
+      </head>
       <body>
         <ClientProvider>{children}</ClientProvider>
       </body>

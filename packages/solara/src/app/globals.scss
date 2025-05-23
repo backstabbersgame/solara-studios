@@ -12,7 +12,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   min-height: 100vh;
   font-family: typography.$base-font-family;
   line-height: typography.$line-height-100;
@@ -28,6 +29,7 @@ main {
   flex-direction: column;
   justify-content: center;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 h1,

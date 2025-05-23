@@ -90,6 +90,67 @@
   margin: 32px 0 28px 0;
 }
 
+@media only screen and (min-width: breakpoints.$tablet-min) {
+  .game {
+    margin-top: -12px;
+  }
+
+  .game-content {
+    display: flex;
+    align-items: flex-start;
+    height: fit-content;
+    justify-content: space-between;
+  }
+
+  .image {
+    width: 50%;
+    padding-bottom: 0;
+  }
+
+  .game-p {
+    white-space: pre-line;
+  }
+
+  .details-container {
+    display: flex;
+    flex-direction: column;
+    // width: 33.5%;
+  }
+
+  .detail {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .detail-p {
+    white-space: normal;
+    font-size: typography.$font-size-14;
+  }
+
+  .line {
+    margin: 21px 0;
+  }
+
+  .btn {
+    width: 15vw;
+    margin-bottom: 0;
+    align-self: center;
+  }
+
+  .link {
+    order: -1;
+    margin-top: 0;
+    margin-bottom: -3.7vh;
+    margin-right: 0vw;
+    align-self: flex-end;
+    width: fit-content;
+    transform: none;
+  }
+}
+
+
+
 @media only screen and (min-width: breakpoints.$laptop-min) {
   .game {
     margin-top: -12px;

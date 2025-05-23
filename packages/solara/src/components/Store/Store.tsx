@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import styles from './Store.module.scss';
@@ -5,20 +7,20 @@ import useBreakpoint from 'src/hooks/useBreakpoint';
 
 const Store = () => {
   const { currentBreakpoint } = useBreakpoint();
-  const isMobileOrTablet =
-    currentBreakpoint === 'mobile' || currentBreakpoint === 'tablet';
+  const isMobile = currentBreakpoint === 'mobile';
+  const isMobileOrTablet = isMobile || currentBreakpoint === 'tablet';
 
-  const collectiblesSrc = isMobileOrTablet
+  const collectiblesSrc = isMobile
     ? '/images/mobile/collectibles.png'
     : '/images/desktop/collectibles.png';
-  const collectiblesWidth = isMobileOrTablet ? 320 : 632;
-  const collectiblesHeight = isMobileOrTablet ? 210 : 418;
+  const collectiblesWidth = isMobile ? 320 : 632;
+  const collectiblesHeight = isMobile ? 210 : 418;
 
-  const boardgamesSrc = isMobileOrTablet
+  const boardgamesSrc = isMobile
     ? '/images/mobile/boardgames.png'
     : '/images/desktop/boardgames.png';
-  const boardgamesWidth = isMobileOrTablet ? 320 : 632;
-  const boardgamesHeight = isMobileOrTablet ? 210 : 418;
+  const boardgamesWidth = isMobile ? 320 : 632;
+  const boardgamesHeight = isMobile ? 210 : 418;
 
   return (
     <>
@@ -65,11 +67,10 @@ const Store = () => {
                   src='/images/lock-key.svg'
                   alt='Cadeado'
                 />
-                <p className={styles.p}>
-                  COMPRA 100% SEGURA
-                  <br />
-                  <p>Lorem ipsum dolor</p>
-                </p>
+                <div>
+                  <p className={styles.p}>COMPRA 100% SEGURA</p>
+                  <p className={styles.subp}>Lorem ipsum dolor</p>
+                </div>
               </div>
               <hr className={styles.line} />
               <div className={styles.payment}>
@@ -79,11 +80,10 @@ const Store = () => {
                   src='/images/credit-card.svg'
                   alt='Cartão de crédito'
                 />
-                <p className={styles.p}>
-                  PAGUE COMO QUISER
-                  <br />
-                  <p>Lorem ipsum dolor</p>
-                </p>
+                <div>
+                  <p className={styles.p}>PAGUE COMO QUISER</p>
+                  <p className={styles.subp}>Lorem ipsum dolor</p>
+                </div>
               </div>
               <hr className={styles.line} />
               <div className={styles.payment}>
@@ -93,11 +93,10 @@ const Store = () => {
                   src='/images/truck.svg'
                   alt='Caminhão'
                 />
-                <p className={styles.p}>
-                  ENTREGA PARA TODO BRASIL
-                  <br />
-                  <p>Lorem ipsum dolor</p>
-                </p>
+                <div>
+                  <p className={styles.p}>ENTREGA PARA TODO BRASIL</p>
+                  <p className={styles.subp}>Lorem ipsum dolor</p>
+                </div>
               </div>
             </div>
           </div>

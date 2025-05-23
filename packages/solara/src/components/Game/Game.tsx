@@ -8,7 +8,7 @@ import VerticalButton from 'src/components/VerticalButton/VerticalButton';
 const Game = () => {
   const { currentBreakpoint } = useBreakpoint();
   const isMobileOrTablet =
-    currentBreakpoint === 'mobile' || currentBreakpoint === 'tablet';
+    currentBreakpoint === 'mobile';// || currentBreakpoint === 'tablet';
   const imageSrc = isMobileOrTablet
     ? '/images/mobile/backstabbers-expansion.svg'
     : '/images/desktop/backstabbers-expansion.svg';
