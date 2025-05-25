@@ -19,7 +19,9 @@ import {
   YoutubeLogo,
 } from '@phosphor-icons/react/dist/ssr';
 import useBreakpoint from 'src/hooks/useBreakpoint';
+import footerContent from 'src/content/footer.json';
 
+const footer = footerContent;
 const Footer = () => {
   const { currentBreakpoint } = useBreakpoint();
   const isMobile = currentBreakpoint === 'mobile';
@@ -32,145 +34,73 @@ const Footer = () => {
           <div className={styles.logo}>
             {isMobileOrTablet ? (
               <Image
-                src={'/images/solara-horizontal-light.svg'}
-                alt={'Solara logo'}
+                src={footer.logo.mobile}
+                alt={footer.logo.alt}
                 width={172.7}
                 height={48}
               />
             ) : (
               <Image
-                src={'/images/solara-light.svg'}
-                alt={'Solara logo'}
+                src={footer.logo.desktop}
+                alt={footer.logo.alt}
                 width={158.82}
                 height={169}
               />
             )}
           </div>
           <div className={styles.right}>
-            <section className={styles.ajuda}>
-              <h4 className={styles.h4}>Ajuda</h4>
-              <div className={styles.links}>
-                <Button
-                  variant='link'
-                  className={styles.button}
-                >
-                  <Chats size={24} />
-                  Fale com a gente
-                </Button>
-                <Button
-                  variant='link'
-                  className={styles.button}
-                >
-                  <Bag size={24} />
-                  Quero vender
-                </Button>
-                <Button
-                  variant='link'
-                  className={styles.button}
-                >
-                  <Truck size={24} />
-                  Política de frete
-                </Button>
-              </div>
-            </section>
-            <section className={styles.produtos}>
-              <h4 className={styles.h4}>Produtos</h4>
-              <div className={styles.links}>
-                <Button
-                  variant='link'
-                  className={styles.button}
-                >
-                  <Sword size={24} />
-                  Nossos jogos
-                </Button>
-                <Button
-                  variant='link'
-                  className={styles.button}
-                >
-                  <HourglassLow size={24} />
-                  Em breve!
-                </Button>
-                <Button
-                  variant='link'
-                  className={styles.button}
-                >
-                  <ShoppingCart size={24} />
-                  Lojinha
-                </Button>
-              </div>
-            </section>
-            <section className={styles.solara}>
-              <h4 className={styles.h4}>Solara</h4>
-              <div className={styles.links}>
-                <Button
-                  variant='link'
-                  className={styles.button}
-                >
-                  <UsersThree size={24} />
-                  Quem somos
-                </Button>
-                <Button
-                  variant='link'
-                  className={styles.button}
-                >
-                  <ThumbsUp size={24} />
-                  Parcerias
-                </Button>
-                <Button
-                  variant='link'
-                  className={styles.button}
-                >
-                  <Question size={24} />
-                  FAQ
-                </Button>
-              </div>
-            </section>
-            <section className={styles.sociais}>
-              <h4 className={styles.h4}>Redes sociais</h4>
-              <div className={styles.links}>
-                <Button
-                  variant='link'
-                  className={styles.button}
-                >
-                  <InstagramLogo size={24} />
-                  Instagram
-                </Button>
-                <Button
-                  variant='link'
-                  className={styles.button}
-                >
-                  <YoutubeLogo size={24} />
-                  YouTube
-                </Button>
-                <Button
-                  variant='link'
-                  className={styles.button}
-                >
-                  <TiktokLogo size={24} />
-                  Tik Tok
-                </Button>
-              </div>
-            </section>
+            {footer.sections.map((section) => (
+              <section
+                key={section.title}
+                className={styles[section.className]}
+              >
+                <h4 className={styles.h4}>{section.title}</h4>
+                <div className={styles.links}>
+                  {section.links.map((link, idx) => (
+                    <Button
+                      key={idx}
+                      variant='link'
+                      className={styles.button}
+                    >
+                      {link.icon === 'Chats' && <Chats size={24} />}
+                      {link.icon === 'Bag' && <Bag size={24} />}
+                      {link.icon === 'Truck' && <Truck size={24} />}
+                      {link.icon === 'Sword' && <Sword size={24} />}
+                      {link.icon === 'HourglassLow' && (
+                        <HourglassLow size={24} />
+                      )}
+                      {link.icon === 'ShoppingCart' && (
+                        <ShoppingCart size={24} />
+                      )}
+                      {link.icon === 'UsersThree' && <UsersThree size={24} />}
+                      {link.icon === 'ThumbsUp' && <ThumbsUp size={24} />}
+                      {link.icon === 'Question' && <Question size={24} />}
+                      {link.icon === 'InstagramLogo' && (
+                        <InstagramLogo size={24} />
+                      )}
+                      {link.icon === 'YoutubeLogo' && <YoutubeLogo size={24} />}
+                      {link.icon === 'TiktokLogo' && <TiktokLogo size={24} />}
+                      {link.label}
+                    </Button>
+                  ))}
+                </div>
+              </section>
+            ))}
           </div>
         </div>
         <section className={styles.brand}>
           <div className={styles['brand-buttons']}>
-            <Button
-              className={styles['brand-btn']}
-              variant='link'
-            >
-              Privacidade
-            </Button>
-            <Button
-              className={styles['brand-btn']}
-              variant='link'
-            >
-              Termos de Uso
-            </Button>
+            {footer.legal.map((item, idx) => (
+              <Button
+                key={idx}
+                className={styles['brand-btn']}
+                variant='link'
+              >
+                {item}
+              </Button>
+            ))}
           </div>
-          <span className={styles.copyright}>
-            Copyright 2025 © Solara Studios
-          </span>
+          <span className={styles.copyright}>{footer.copyright}</span>
         </section>
       </div>
     </section>
