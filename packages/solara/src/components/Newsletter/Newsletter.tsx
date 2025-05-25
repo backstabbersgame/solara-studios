@@ -5,14 +5,17 @@ import styles from './Newsletter.module.scss';
 import { Button, InputText } from '@solara-studios/design-system/src';
 import Image from 'next/image';
 import useBreakpoint from 'src/hooks/useBreakpoint';
+import newsletterContent from 'src/content/newsletter.json';
+
+const newsletter = newsletterContent;
 
 const Newsletter = () => {
   const { currentBreakpoint } = useBreakpoint();
   const isMobile = currentBreakpoint === 'mobile';
 
   const imageSrc = isMobile
-    ? '/images/mobile/dealer.png'
-    : '/images/desktop/dealer.png';
+    ? newsletter.image.mobile
+    : newsletter.image.desktop;
   const imageWidth = isMobile ? 320 : 620;
   const imageHeight = isMobile ? 285 : 394;
 
@@ -21,18 +24,15 @@ const Newsletter = () => {
       <div className={styles['newsletter-container']}>
         <div className={styles['newsletter-content']}>
           <div className={styles['newsletter-title']}>
-            <h1 className={styles.header}>Fique por dentro etc etc</h1>
+            <h1 className={styles.header}>
+              {newsletter.title.replace(/\\n/g, '\n')}
+            </h1>
             <p className={styles.p}>
-              {isMobile
-                ? `Lorem ipsum dolor sit amet consectetur.
-            Sit aliquet elementum enim sed sed
-            tristique fringilla.`
-                : `Lorem ipsum dolor sit amet consectetur. Sit aliquet
-            elementum enim sed sed tristique fringilla.`}
+              {newsletter.description.replace(/\\n/g, '\n')}
             </p>
           </div>
           <InputText
-            placeholder='E-mail*'
+            placeholder={newsletter.emailPlaceholder}
             className={styles.email}
           />
 
@@ -40,12 +40,12 @@ const Newsletter = () => {
             variant='secondary'
             className={styles.btn}
           >
-            Assinar a newsletter
+            {newsletter.buttonLabel}
             <Image
               width={24}
               height={24}
-              src='/images/paper-plane.svg'
-              alt='Avião de papel'
+              src={newsletter.buttonIcon.src}
+              alt={newsletter.buttonIcon.alt}
               className={styles.icon}
             />
           </Button>
@@ -54,7 +54,7 @@ const Newsletter = () => {
           width={imageWidth}
           height={imageHeight}
           src={imageSrc}
-          alt='Personagem'
+          alt={newsletter.image.alt}
           className={styles.dealer}
         />
       </div>

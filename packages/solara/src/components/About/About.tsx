@@ -1,8 +1,13 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import styles from './About.module.scss';
 import { Button } from '@solara-studios/design-system/src';
 import useBreakpoint from 'src/hooks/useBreakpoint';
+import aboutContent from 'src/content/about.json';
+
+const about = aboutContent;
 
 const About = () => {
   const { currentBreakpoint } = useBreakpoint();
@@ -17,13 +22,17 @@ const About = () => {
             <Image
               width={isMobileOrTablet ? 24 : 32}
               height={isMobileOrTablet ? 24 : 32}
-              src='/images/planet.svg'
-              alt='Planeta'
+              src={about.icon}
+              alt={about.iconAlt}
             />
             <div className={styles['section-title']}>
-              <h2 className={styles['section-title-one']}>Quem faz a &nbsp;</h2>
-              <h2 className={styles['section-title-two']}>Solara</h2>
-              <h2>?</h2>
+              <h2 className={styles['section-title-one']}>
+                {about.titleOne.replace(/\\n/g, '\n')}&nbsp;
+              </h2>
+              <h2 className={styles['section-title-two']}>
+                {about.titleTwo.replace(/\\n/g, '\n')}
+              </h2>
+              <h2>{about.titleThree}</h2>
             </div>
           </header>
           <div className={styles['about-content']}>
@@ -31,38 +40,32 @@ const About = () => {
               <Image
                 width={isMobile ? 356.64 : 524}
                 height={isMobile ? 237.56 : 288}
-                src='/images/people.png'
-                alt='Pessoas abraçadas sorrindo'
+                src={about.picture}
+                alt={about.pictureAlt}
               />
             </div>
             <div className={styles['about-side']}>
               <p className={styles['about-p']}>
-                {`Em 2019, um grupo de amigos se vê diante de uma ideia que tinha crescido para
-                além deles. Juntando o desejo de criar uma experiência divertida entre amigos e a
-                vontade de representar o mercado de jogos pernambucanos no Brasil, nasce a `}
-                <strong>Solara</strong>
-                {`, 
-                um estúdio de jogos que tem como foco a diversão, a diversidade e a representatividade.`}
+                {about.description.replace(/\\n/g, '\n')}
+                <strong>{about.companyName}</strong>
+                {about.descriptionAfterCompany.replace(/\\n/g, '\n')}
               </p>
               <div className={styles['about-data']}>
-                <div className={styles.data}>
-                  <h2>+10k</h2>
-                  <h4>Lorem ipsum dolor</h4>
-                </div>
-                <div className={styles.data}>
-                  <h2>15k</h2>
-                  <h4>Lorem ipsum dolor</h4>
-                </div>
-                <div className={styles.data}>
-                  <h2>+45k</h2>
-                  <h4>Lorem ipsum dolor</h4>
-                </div>
+                {about.data.map((item, index) => (
+                  <div
+                    key={index}
+                    className={styles.data}
+                  >
+                    <h2>{item.value}</h2>
+                    <h4>{item.label}</h4>
+                  </div>
+                ))}
               </div>
               <Button
                 variant='secondary'
                 className={styles.btn}
               >
-                Saiba mais
+                {about.buttonLabel}
               </Button>
             </div>
           </div>

@@ -4,6 +4,9 @@ import Image from 'next/image';
 import { Button, Carousel } from '@solara-studios/design-system/src';
 import useBreakpoint from 'src/hooks/useBreakpoint';
 import gamesData from '../../content/gamesData.json';
+import gameContent from '../../content/game.json';
+
+const game = gameContent;
 
 const Game = () => {
   const { currentBreakpoint } = useBreakpoint();
@@ -12,8 +15,8 @@ const Game = () => {
   const games = useMemo(() => [...gamesData], []);
 
   const formsSrc = isMobileOrTablet
-    ? '/images/mobile/game-section-forms.svg'
-    : '/images/desktop/game-section-forms.svg';
+    ? game.forms.mobile
+    : game.forms.desktop;
   const formsWidth = isMobileOrTablet ? 611 : 1440;
   const formsHeight = isMobileOrTablet ? 60.13 : 112.38;
 
@@ -24,23 +27,24 @@ const Game = () => {
           <Image
             width={isMobileOrTablet ? 26 : 32}
             height={isMobileOrTablet ? 26 : 32}
-            src='/images/rocket.svg'
-            alt='Foguete'
+            src={game.icon}
+            alt={game.iconAlt}
           />
           <div className={styles['section-title']}>
-            <h3 className={styles['section-title-one']}>Conheça&nbsp;</h3>
-            <h3 className={styles['section-title-two']}>nossos jogos</h3>
+            <h3 className={styles['section-title-one']}>
+              {game.titleOne.replace(/\\n/g, '\n')}&nbsp;
+            </h3>
+            <h3 className={styles['section-title-two']}>
+              {game.titleTwo.replace(/\\n/g, '\n')}
+            </h3>
           </div>
           <p className={styles['game-p']}>
-            {`Lorem ipsum dolor sit amet consectetur. Sit aliquet 
-           elementum enim sed sed tristique fringilla.`}
+            {game.description.replace(/\\n/g, '\n')}
           </p>
         </section>
         <div className={styles.carousel}>
           <Carousel
             games={games}
-            // activeIndex={activeIndex}
-            // setActiveIndex={setActiveIndex}
           />
         </div>
         <Button
@@ -48,14 +52,14 @@ const Game = () => {
           arrowRight
           className={styles.link}
         >
-          Ver todos os jogos
+          {game.buttonLabel}
         </Button>
       </div>
       <Image
         width={formsWidth}
         height={formsHeight}
         src={formsSrc}
-        alt='Ondas em degradê'
+        alt={game.waveAlt}
         style={{ width: '100%', height: 'auto' }}
       />
     </section>

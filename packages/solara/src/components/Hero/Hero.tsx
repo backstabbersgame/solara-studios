@@ -5,13 +5,10 @@ import styles from './Hero.module.scss';
 import Image from 'next/image';
 import { Button } from '@solara-studios/design-system/src';
 import heroContent from 'src/content/hero.json';
-import { HeroContent } from 'src/types/content';
 
-const hero: HeroContent = heroContent;
+const hero = heroContent;
 
 const Hero = () => {
-  console.log(heroContent.description.split('\n'));
-
   return (
     <div className={styles.hero}>
       <div className={styles['hero-side']}>

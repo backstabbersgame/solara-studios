@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './Contact.module.scss';
@@ -17,24 +18,16 @@ import {
   TiktokLogo,
   YoutubeLogo,
 } from '@phosphor-icons/react/dist/ssr';
+import contactContent from 'src/content/contact.json';
+
+const contact = contactContent;
 
 const Contact = () => {
   const { currentBreakpoint } = useBreakpoint();
   const isMobile = currentBreakpoint === 'mobile';
   const isMobileOrTablet = isMobile || currentBreakpoint === 'tablet';
-
   const [value, setValue] = useState('');
-  const charCount = value.length;
-
-  const options = [
-    { value: '', label: 'Eu sou...', disabled: true },
-    { value: '1', label: 'Artista' },
-    { value: '2', label: 'Cliente' },
-    { value: '3', label: 'Designer' },
-    { value: '4', label: 'Imprensa' },
-    { value: '5', label: 'Logista' },
-    { value: '6', label: 'Tabuleria' },
-  ];
+  const options = contact.selectOptions;
 
   return (
     <section className={styles.contact}>
@@ -43,14 +36,15 @@ const Contact = () => {
           <Image
             width={isMobileOrTablet ? 24 : 32}
             height={isMobileOrTablet ? 24 : 32}
-            src='/images/envelope-simple.svg'
-            alt='Envelope'
+            src={contact.icon}
+            alt={contact.iconAlt}
           />
           <div className={styles['section-title']}>
-            <h2 className={styles.header}>Entre em contato</h2>
+            <h2 className={styles.header}>
+              {contact.title.replace(/\\n/g, '\n')}
+            </h2>
             <p className={styles.p}>
-              Lorem ipsum dolor sit amet consectetur. Sit aliquet elementum enim
-              sed sed tristique fringilla.
+              {contact.description.replace(/\\n/g, '\n')}
             </p>
           </div>
         </header>
@@ -58,11 +52,11 @@ const Contact = () => {
           <div className={styles['contact-inputs']}>
             <div className={styles['contact-inputs-1']}>
               <InputText
-                placeholder='Nome*'
+                placeholder={contact.placeholders.name}
                 className={styles.nome}
               />
               <InputText
-                placeholder='E-mail*'
+                placeholder={contact.placeholders.email}
                 className={styles.email}
               />
             </div>
@@ -72,13 +66,13 @@ const Contact = () => {
                 className={styles.eusou}
               />
               <InputText
-                placeholder='Assunto'
+                placeholder={contact.placeholders.subject}
                 className={styles.assunto}
               />
             </div>
           </div>
           <InputTextArea
-            placeholder='Mensagem*'
+            placeholder={contact.placeholders.message}
             value={value}
             onChange={(e) => setValue(e.target.value)}
             className={styles.mensagem}
@@ -89,7 +83,7 @@ const Contact = () => {
               className={styles.submit}
               arrowRight
             >
-              Enviar
+              {contact.submitLabel}
             </Button>
           </div>
         </section>
@@ -99,13 +93,13 @@ const Contact = () => {
               size={24}
               className={styles.heart}
             />
-            <h4 className={styles.h4}>Entre para nossa comunidade</h4>
+            <h4 className={styles.h4}>{contact.communityTitle}</h4>
           </div>
           <Button
             variant='secondary'
             className={styles['community-btn']}
           >
-            Entrar na comunidade
+            {contact.communityButton}
           </Button>
         </section>
         <section className={styles.socials}>
@@ -114,42 +108,37 @@ const Contact = () => {
               size={24}
               className={styles.at}
             />
-            <h4 className={styles.h4}>Siga nossas redes etc</h4>
+            <h4 className={styles.h4}>{contact.socialsTitle}</h4>
           </div>
           <div className={styles.links}>
-            <a
-              href='https://www.instagram.com/'
-              target='_blank'
-              rel='noopener noreferrer'
-              className={styles['social-link']}
-            >
-              <InstagramLogo
-                size={24}
-                className={styles.instagram}
-              />
-            </a>
-            <a
-              href='https://www.youtube.com/'
-              target='_blank'
-              rel='noopener noreferrer'
-              className={styles['social-link']}
-            >
-              <YoutubeLogo
-                size={24}
-                className={styles.youtube}
-              />
-            </a>
-            <a
-              href='https://www.tiktok.com/'
-              target='_blank'
-              rel='noopener noreferrer'
-              className={styles['social-link']}
-            >
-              <TiktokLogo
-                size={24}
-                className={styles.tiktok}
-              />
-            </a>
+            {contact.socialLinks.map((social, index) => (
+              <a
+                key={index}
+                href={social.href}
+                target='_blank'
+                rel='noopener noreferrer'
+                className={styles['social-link']}
+              >
+                {social.icon === 'InstagramLogo' && (
+                  <InstagramLogo
+                    size={24}
+                    className={styles.instagram}
+                  />
+                )}
+                {social.icon === 'YoutubeLogo' && (
+                  <YoutubeLogo
+                    size={24}
+                    className={styles.youtube}
+                  />
+                )}
+                {social.icon === 'TiktokLogo' && (
+                  <TiktokLogo
+                    size={24}
+                    className={styles.tiktok}
+                  />
+                )}
+              </a>
+            ))}
           </div>
         </section>
       </div>

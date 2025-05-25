@@ -4,6 +4,9 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './Store.module.scss';
 import useBreakpoint from 'src/hooks/useBreakpoint';
+import storeContent from 'src/content/store.json';
+
+const store = storeContent;
 
 const Store = () => {
   const { currentBreakpoint } = useBreakpoint();
@@ -11,14 +14,14 @@ const Store = () => {
   const isMobileOrTablet = isMobile || currentBreakpoint === 'tablet';
 
   const collectiblesSrc = isMobile
-    ? '/images/mobile/collectibles.png'
-    : '/images/desktop/collectibles.png';
+    ? store.collectibles.image.mobile
+    : store.collectibles.image.desktop;
   const collectiblesWidth = isMobile ? 320 : 632;
   const collectiblesHeight = isMobile ? 210 : 418;
 
   const boardgamesSrc = isMobile
-    ? '/images/mobile/boardgames.png'
-    : '/images/desktop/boardgames.png';
+    ? store.boardgames.image.mobile
+    : store.boardgames.image.desktop;
   const boardgamesWidth = isMobile ? 320 : 632;
   const boardgamesHeight = isMobile ? 210 : 418;
 
@@ -30,15 +33,17 @@ const Store = () => {
             <Image
               width={isMobileOrTablet ? 24 : 32}
               height={isMobileOrTablet ? 24 : 32}
-              src='/images/shopping-cart.svg'
-              alt='Carinho de compras'
+              src={store.icon}
+              alt={store.iconAlt}
             />
             <div className={styles['section-title']}>
               <h2 className={styles['section-title-one']}>
-                Novidades na &nbsp;
+                {store.titleOne.replace(/\\n/g, '\n')}&nbsp;
               </h2>
-              <h2 className={styles['section-title-two']}>lojinha</h2>
-              <h2>!</h2>
+              <h2 className={styles['section-title-two']}>
+                {store.titleTwo.replace(/\\n/g, '\n')}
+              </h2>
+              <h2>{store.titleThree}</h2>
             </div>
           </header>
           <div className={styles['store-content']}>
@@ -47,57 +52,38 @@ const Store = () => {
                 width={collectiblesWidth}
                 height={collectiblesHeight}
                 src={collectiblesSrc}
-                alt='Colecionáveis: bottons, camisetas e ecobags'
+                alt={store.collectibles.image.alt}
                 className={styles.merch}
               />
               <Image
                 width={boardgamesWidth}
                 height={boardgamesHeight}
                 src={boardgamesSrc}
-                alt='Caixa do jogo Backstabbers'
+                alt={store.boardgames.image.alt}
                 className={styles.merch}
               />
             </div>
             <div className={styles['store-payments']}>
               {!isMobileOrTablet && <hr className={styles.line} />}
-              <div className={styles.payment}>
-                <Image
-                  width={24}
-                  height={24}
-                  src='/images/lock-key.svg'
-                  alt='Cadeado'
-                />
-                <div>
-                  <p className={styles.p}>COMPRA 100% SEGURA</p>
-                  <p className={styles.subp}>Lorem ipsum dolor</p>
-                </div>
-              </div>
-              <hr className={styles.line} />
-              <div className={styles.payment}>
-                <Image
-                  width={24}
-                  height={24}
-                  src='/images/credit-card.svg'
-                  alt='Cartão de crédito'
-                />
-                <div>
-                  <p className={styles.p}>PAGUE COMO QUISER</p>
-                  <p className={styles.subp}>Lorem ipsum dolor</p>
-                </div>
-              </div>
-              <hr className={styles.line} />
-              <div className={styles.payment}>
-                <Image
-                  width={24}
-                  height={24}
-                  src='/images/truck.svg'
-                  alt='Caminhão'
-                />
-                <div>
-                  <p className={styles.p}>ENTREGA PARA TODO BRASIL</p>
-                  <p className={styles.subp}>Lorem ipsum dolor</p>
-                </div>
-              </div>
+              {store.payments.map((payment, index) => (
+                <React.Fragment key={payment.title}>
+                  <div className={styles.payment}>
+                    <Image
+                      width={24}
+                      height={24}
+                      src={payment.icon}
+                      alt={payment.iconAlt}
+                    />
+                    <div>
+                      <p className={styles.p}>{payment.title}</p>
+                      <p className={styles.subp}>{payment.subtitle}</p>
+                    </div>
+                  </div>
+                  {index !== store.payments.length - 1 && (
+                    <hr className={styles.line} />
+                  )}
+                </React.Fragment>
+              ))}
             </div>
           </div>
         </div>
