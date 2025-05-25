@@ -39,7 +39,7 @@ export const useBreakpoint = (): UseBreakpointProps => {
     };
 
     const getCurrentBreakpoint = (width: number): string => {
-      if (width >= parseInt(breakpoints.wideScreen)) {
+      if (width >= parseInt(breakpoints.ultraWideScreen)) {
         return 'ultra wide screen';
       }
       if (width >= parseInt(breakpoints.wideScreen)) {
@@ -77,6 +77,6 @@ export const useBreakpoint = (): UseBreakpointProps => {
 
   return {
     windowWidth,
-    currentBreakpoint,
+    currentBreakpoint
   };
 };

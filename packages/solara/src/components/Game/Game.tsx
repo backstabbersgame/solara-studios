@@ -1,19 +1,15 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import styles from './Game.module.scss';
 import Image from 'next/image';
-import { Button } from '@solara-studios/design-system/src';
+import { Button, Carousel } from '@solara-studios/design-system/src';
 import useBreakpoint from 'src/hooks/useBreakpoint';
-import VerticalButton from 'src/components/VerticalButton/VerticalButton';
+import gamesData from '../../content/gamesData.json';
 
 const Game = () => {
   const { currentBreakpoint } = useBreakpoint();
   const isMobileOrTablet =
-    currentBreakpoint === 'mobile';// || currentBreakpoint === 'tablet';
-  const imageSrc = isMobileOrTablet
-    ? '/images/mobile/backstabbers-expansion.svg'
-    : '/images/desktop/backstabbers-expansion.svg';
-  const imageWidth = isMobileOrTablet ? 320 : 620;
-  const imageHeight = isMobileOrTablet ? 285 : 394;
+    currentBreakpoint === 'mobile' || currentBreakpoint === 'tablet';  
+  const games = useMemo(() => [...gamesData], []);
 
   const formsSrc = isMobileOrTablet
     ? '/images/mobile/game-section-forms.svg'
@@ -40,74 +36,12 @@ const Game = () => {
            elementum enim sed sed tristique fringilla.`}
           </p>
         </section>
-        <div className={styles['game-content']}>
-          <Image
-            width={imageWidth}
-            height={imageHeight}
-            src={imageSrc}
-            alt='Capa de expanções Backstabbers'
-            className={styles.image}
+        <div className={styles.carousel}>
+          <Carousel
+            games={games}
+            // activeIndex={activeIndex}
+            // setActiveIndex={setActiveIndex}
           />
-
-          <div className={styles['details-container']}>
-            <div className={styles['detail']}>
-              <Image
-                width={32}
-                height={32}
-                src='/images/sketch-logo.svg'
-                alt='Diamante com gradiente'
-              />
-              <div>
-                <h4 className={styles['detail-title']}>
-                  Mais de 300 cópias vendidas
-                </h4>
-                <p className={styles['detail-p']}>
-                  {`Lorem ipsum dolor sit amet consectetur. Sit aliquet
-                  elementum enim sed sed tristique fringilla.`}
-                </p>
-              </div>
-            </div>
-            <hr className={styles.line} />
-            <div className={styles['detail']}>
-              <Image
-                width={32}
-                height={32}
-                src='/images/sword.svg'
-                alt='Diamante com gradiente'
-              />
-              <div>
-                <h4 className={styles['detail-title']}>4 modos de jogo</h4>
-                <p className={styles['detail-p']}>
-                  {`Lorem ipsum dolor sit amet consectetur. Sit aliquet
-                  elementum enim sed sed tristique fringilla.`}
-                </p>
-              </div>
-            </div>
-            <hr className={styles.line} />
-            <div className={styles['detail']}>
-              <Image
-                width={32}
-                height={32}
-                src='/images/heart.svg'
-                alt='Diamante com gradiente'
-              />
-              <div>
-                <h4 className={styles['detail-title']}>3 expansões</h4>
-                <p className={styles['detail-p']}>
-                  {`Lorem ipsum dolor sit amet consectetur. Sit aliquet
-                  elementum enim sed sed tristique fringilla.`}
-                </p>
-              </div>
-            </div>
-
-            <Button
-              variant='tertiary'
-              className={styles.btn}
-            >
-              Detalhes do jogo
-            </Button>
-          </div>
-          {!isMobileOrTablet && <VerticalButton />}
         </div>
         <Button
           variant='link'

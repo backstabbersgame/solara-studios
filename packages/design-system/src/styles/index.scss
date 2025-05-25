@@ -3,3 +3,7 @@
 @forward 'partials/typography';
 @forward 'partials/spaces';
 @forward 'partials/breakpoints';
+
+.sb-main-padded.sb-show-main {
+  padding: 1rem 0 !important;
+}

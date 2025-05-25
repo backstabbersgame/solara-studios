@@ -7,7 +7,7 @@ import { Button } from '@solara-studios/design-system/src';
 import heroContent from 'src/content/hero.json';
 import { HeroContent } from 'src/types/content';
 
-const content: HeroContent = heroContent;
+const hero: HeroContent = heroContent;
 
 const Hero = () => {
   console.log(heroContent.description.split('\n'));
@@ -17,24 +17,24 @@ const Hero = () => {
       <div className={styles['hero-side']}>
         <section className={styles['hero-content']}>
           <h1 className={styles['hero-title']}>
-            {content.title.replace(/\\n/g, '\n')}
+            {hero.title.replace(/\\n/g, '\n')}
           </h1>
           <p className={styles['hero-p']}>
-            {content.description.replace(/\\n/g, '\n')}
+            {hero.description.replace(/\\n/g, '\n')}
           </p>
         </section>
         <section className={styles['hero-buttons']}>
           <Button
             variant='primary'
             className={styles.btn}
-            href={content.tertiary.link}
+            href={hero.tertiary.link}
           >
             <a
-              href={content.primary.link}
+              href={hero.primary.link}
               target='_blank'
               rel='noopener noreferrer'
             >
-              {content.primary.label}
+              {hero.primary.label}
             </a>
           </Button>
           <Button
@@ -42,11 +42,11 @@ const Hero = () => {
             className={styles.btn}
           >
             <a
-              href={content.tertiary.link}
+              href={hero.tertiary.link}
               target='_blank'
               rel='noopener noreferrer'
             >
-              {content.tertiary.label}
+              {hero.tertiary.label}
             </a>
           </Button>
         </section>

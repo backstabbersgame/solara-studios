@@ -5,6 +5,8 @@ export { default as BasicNav } from './core/nav/index';
 export { default as BasicLabel } from './core/label/index';
 export { default as BreakpointTracker } from './components/BreakpointTracker/BreakpointTracker';
 export { default as Button } from './components/Button/Button';
+export { default as Carousel } from './components/Carousel/Carousel';
+export { default as GameCard } from './components/GameCard/GameCard';
 export { default as Grid } from './components/Grid/Grid';
 export { default as Header } from './components/Header/Header';
 export { default as InputSelect } from './components/InputSelect/InputSelect';
